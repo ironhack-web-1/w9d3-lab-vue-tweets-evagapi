@@ -1,37 +1,27 @@
 <template>
   <div className="tweet">
-    <img :src="imageSrc" className="profile" alt="profile" />
-
+    <ProfileImage :imageSrc="imageSrc" />
     <div className="body">
       <div className="top">
-        <span className="user">
-          <span className="name">{{ username }}</span>
-          <span className="handle">{{ handle }}</span>
-        </span>
-
-        <span className="timestamp">{{ timestamp }}</span>
+        <User :username="username" :handle="handle" />
+        <Timestamp :timestamp="timestamp" />
       </div>
-
-      <p className="message">
-        {{ message }}
-      </p>
-
-      <div className="actions">
-        <!-- Font Awesome icons -->
-        <i class="far fa-comment"></i>
-        <i class="fas fa-retweet"></i>
-        <i class="far fa-heart"></i>
-        <i class="fas fa-share"></i>
-      </div>
+      <Message :message="message" />
+      <Actions />
     </div>
-
     <i class="fas fa-ellipsis-h"></i>
   </div>
 </template>
 
 <script>
+import ProfileImage from "./ProfileImage.vue";
+import User from "./User.vue";
+import Timestamp from "./Timestamp.vue";
+import Message from "./Message.vue";
+import Actions from "./Actions.vue";
 export default {
   props: ["username", "imageSrc", "handle", "timestamp", "message"],
+  components: { ProfileImage, User, Timestamp, Message, Actions },
 };
 </script>
 
